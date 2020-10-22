@@ -1,14 +1,14 @@
-let a = 100 >10
-let b = 10<5
-let c = true
+const input = document.querySelector('.input')
+const btn = document.querySelector('.btn')
+const result = document.querySelector('.result')
+console.log(btn)
+console.log(result)
 
-console.log(a||b||c)
-console.log(a&&b&&c)
-
-const age  =15
-console.log(age>20? '성인입니다.' : '청소년입니다.')
-
-
+btn.addEventListener('click', function(e) {
+  e.preventDefault()
+  const value = input.value
+  result.textContent = value
+})
 
 
 
