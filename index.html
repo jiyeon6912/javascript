@@ -8,8 +8,27 @@
 </head>
 <body>
   <h1>Hello javascript</h1>
+  <button  onclick="alert('hello')">클릭</button>  <!-- 인라인 이벤트 모델-->
+  
+  <button  onclick="sum('안녕하세요')">클릭</button>
+
+  <button id='bt'>클릭</button>  <!--기본이벤트 모델 1-1-->>
+  <script> //기본이벤트 모델 1-2
+    var bt = document.getElementById('bt')
+    console.log(bt)
+    bt.onclick = function() {
+      alert('버튼이 클릭되었습니다.')
+    }
+  </script>
+
+
+  <script>
+    function sum(n) {
+      alert(n)
+    }
+  </script>
  
-  <!-- <script src="./app.js"></script>     -->
+  <script src="./app.js"></script>    
   <!-- <script src="./01_variable.js"></script>     -->
   <!-- <script src="./02_operator.js"></script>     -->
   <!-- <script src="./03_condition.js"></script>     -->
@@ -17,7 +36,7 @@
   <!-- <script src="./05_function.js"></script>     -->
   <!-- <script src="./06_object.js"></script>     -->
   <!-- <script src="./07_class.js"></script>     -->
-  <script src="./08_array.js"></script>    
+  <!-- <script src="./08_array.js"></script>     -->
   <!-- <script src="./09.array_api.js"></script>     -->
 
 </body>

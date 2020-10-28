@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS</title>
+</head>
+<body> 
+  <button id='btn'>타이머실행 클릭</button>
+  <button class='btn'>클래스버튼 클릭</button>
+  <button id='stop_btn'>타이머멈춤 클릭</button>
+
+  
+
+  <script> //표준이벤트 모델
+    let btn = document.getElementById('btn')
+
+    btn.addEventListener('click', function(){
+      alert('실행됩니다.')
+      console.log('hahaha~~~')
+
+    })
+
+    function win1() {
+      console.log('ok1!!!!!')
+    }
+    
+    function win2() {
+      console.log('ok1!!!!!') 
+    }
+
+    addEventListener('load', win1) 
+    addEventListener('load', win2)
+
+    const cbtn = document.querySelector('.btn') //클래스 일때
+    console.log(cbtn)
+    const idbtn = document.querySelector('#btn') //id일때
+    console.log(idbtn)
+
+    btn.addEventListener('click',function(e) {
+      console.log(e) //이벤트에 관한 정보를 모두 출력
+      console.log(e.target) //원하는 이벤트 항목만 출력
+      e.preventDefault() //기본이벤트와 디폴트 이벤트 버블링등을 모두 막아준다.
+
+     
+      const stop_btn = document.querySelector('#stop_btn')      
+      var i = 0
+      // setInterval(함수,시간)
+      var timer = setInterval(function(){
+        i++ 
+        console.log(i)
+      }, 2000)  //1000은 1초 2초마다 i를 1씩 증가시켜 콘솔에 출력
+
+      stop_btn.addEventListener('click',function() {
+        clearInterval(timer)  
+      //clearInterval() 함수를 실행하기 위해서는 
+      //setInterval() 함수의 이름지정(변수지정)을 한 후 호출해야 실행가능
+      })
+
+    })
+
+  </script>
+
+
+</body>
+</html>
