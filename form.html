@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form  todu list</title>
+</head>
+<body>
+  
+  <form class="form">
+    <!-- <input class="input" type="text" placeholder="검색어입력">  -->
+    <!-- <input class="btn" type="submit" value="확인">  -->
+    <input type="text" placeholder="검색어입력"> 
+  </form>
+  <h2 class="word"></h2>
+
+  <script>
+    // const btn = document.querySelector('.btn')
+    // const input = document.querySelector('.input')
+    // btn.addEventListener('click',function(e) {
+      // e.preventDefault()  //기존의 이벤트로 인해 출력내용이 사라지는 것을 방지한다. 기본이벤틀를 막아준다.
+      // console.log('btn clicked')
+      // console.log(input.value)  //value값을 반환한다. 중요!!!
+    // })
+
+    const form = document.querySelector('.form')
+    const input = form.querySelector('input')
+    const word = document.querySelector('.word')
+
+    function searchValue(text) {
+      console.log(text)
+    }
+
+    function handleSubmit(e) {
+    e.preventDefault()
+    const say = input.value
+    word.textContent = say
+    searchValue(say)
+    iuput.value = ''
+    }
+
+    function init() {
+      form.addEventListener('submit',handleSubmit)
+    }
+
+    init()
+  </script>
+</body>
+</html>
