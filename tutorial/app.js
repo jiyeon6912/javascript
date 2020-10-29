@@ -6,17 +6,17 @@ const sum = document.querySelector('.sum')
 // const minus = document.querySelector('.minus')
 // const reset = document.querySelector('.reset')
 
-const btns = document.querySelectorAll('button') 
+const btns = document.querySelectorAll('button') //배열형식으로 지정됨
 
 console.log(price) //변수지정 확인하는 작업 필요!!
 console.log(count)
 console.log(sum)
-// console.log(btns)
+console.log(btns)
 
 const unit_price = 15000 // 물건 단가
-let num = 1 //초기수량
+let num = 1 //초기수량(수량초기화) , 수량을 나타내는 num변수는 값이 변경되므로 const로 선언할 수 없음.
 
-price.textContent = unit_price
+price.textContent = unit_price  //price클래스에 unit_price 내용을 출력한다. textContent 매서드의 역할
 count.textContent = num
 sum.textContent = unit_price * num
 
@@ -31,9 +31,9 @@ function printTotalPrice() {
 // } 표준형식
 
  
- btns.forEach(btn=>  {
+ btns.forEach(btn=>  {  //btns 배열의 각각의 값을 btn(임의로 지정하는 변수)에 넣어준다.
   //  console.log(btn)
-  btn.addEventListener('click',function(e){
+  btn.addEventListener('click',function(e){  //btn에 'click'이벤트가 실행되었을때 function(e)를 실행
     // console.log(e.target.className)
     if(e.target.className === 'plus') {
       num++
