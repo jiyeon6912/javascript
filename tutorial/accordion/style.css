@@ -38,7 +38,7 @@ h1 {
 }
 
 .accordion .content h2::after {
-  font-family: 'xeicon'; /*사용하는 특수문자가 있는때 font-family: ;를 지정해주어야함.*/
+  font-family: 'xeicon'; /*사용하는 특수문자가 있을때 font-family: ;를 지정해주어야함.*/
   content: '\e9c5';
   position: absolute;
   top: 50%;
