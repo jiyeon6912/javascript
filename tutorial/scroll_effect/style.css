@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.title {
+  position: relative;
+  top: 300px;
+  text-align: center;
+  font-size: 60px;
+  z-index: 1;
+}
+
+section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /*100% 부모요소의 높이 100%이다. 부모 현재는 body 높이가 지정되어 있지 않으므로 100vh*/
+  background: url(./bg.jpg) no-repeat center / cover;
+  background-attachment: fixed; /*배경화면을 고정시키는 역할*/
+  clip-path: circle(
+    0px at center center
+  ); /*인터넷익스플로어 에서는 아직 실행안됨. 모던한 브라우즈에서만 가능*/
+  /*중앙에서 원을 그리면서 배경화면이 나타나는 역할*/
+}
+
+.container {
+  position: relative;
+  margin-top: 200vh;
+  background: #fff;
+  padding: 100px 300px;
+  z-index: 10;
+}
+
+.container h2 {
+  font-size: 36px;
+  margin-bottom: 36px;
+}
+
+.container p {
+  padding: 20px 0;
+  margin-bottom: 10px;
+  line-height: 2;
+}
