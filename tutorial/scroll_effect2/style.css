@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #111;
+  color: #fff;
+}
+
+.movie {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #111;
+  clip-path: circle(100px at center center);
+  /*원모양이외 다른모양도 구현가능함*/
+
+  /* clip-path: fill-box circle(100px at center center);  실행안됨 확인하기!!*/
+}
+
+.movie video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /*부모요소 높이가 지정되어 있으므로 100% 지정가능함*/
+  object-fit: cover;
+}
+
+.container {
+  position: relative;
+  margin-top: 200vh;
+  padding: 100px;
+  background: #111;
+}
