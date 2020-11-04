@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+.container {
+  width: 600px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.poster {
+  margin-bottom: 1rem;
+  height: 300px;
+  overflow: hidden; /*설정한 크기 대비 넘어가는 이미지부분은 잘라버림*/
+}
+
+.title_area {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.title_area p {
+  width: 26px;
+  height: 26px;
+  background: #111;
+  color: #fff;
+  text-align: center;
+  line-height: 26px;
+  margin-right: 1rem;
+}
+
+#director {
+  margin-bottom: 1rem;
+}
+
+#info {
+  margin-bottom: 1rem;
+  /* background: red; */
+}
+/* ------영화설명 3줄라인까지 표시하고 나머지는 말줄임표시 시작!!------*/
+#info {
+  font-size: 1em; /*1rem 은 16px  이고 em은 현재 font-size기준 %를 의미함*/
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5;
+  height: 4.5em;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /*보여줄 라인수를 늘이려면 height는 line-height 곱하기 보여줄라인수*/
+  -webkit-box-orient: vertical;
+}
+
+/* ------영화설명 3줄라인까지 표시하고 나머지는 말줄임표시 끝!!-----*/
