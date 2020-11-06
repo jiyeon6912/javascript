@@ -1,3 +1,7 @@
+const dimm = document.querySelector('.dimm')
+const modal = document.querySelector('.modal')
+const close = document.querySelector('.close')
+
 function sendMail() {
   // get all data in form and return object
   function getFormData(form) {
@@ -53,20 +57,22 @@ function sendMail() {
   }
 
   function handleFormSubmit(event) {
+    // 메일전송시 로딩시간이 걸릴때 spin gif 이미지 보여줄때 dimm과 로딩 먼저 나타난다.
+    
     // handles form submit without any jquery
     event.preventDefault() // we are submitting via xhr below
     var form = event.target
     var formData = getFormData(form)
     var data = formData.data
 
-    //-----이름,이메일,내용 입력없이 보내기 버튼 클릭시 경고창 팝업됨.-----
     // console.log(data)
     if (data.name === '' || data.email === '' || data.message === '') {
       alert('이름과 이메일, 내용을 확인하세요!')
-      return
-    }
-    //-----이름,이메일,내용 입력없이 보내기 버튼 클릭시 경고창 팝업됨.-----
+      return  // 이 if문을 빠져나가고 더이상 실행되지 않음
 
+    } else {
+      dimm.classList.add('active')
+    }
 
     // If a honeypot field is filled, assume it was done so by a spam bot.
     if (formData.honeypot) {
@@ -83,13 +89,13 @@ function sendMail() {
       if (xhr.readyState === 4 && xhr.status === 200) {
         form.reset()
 
-        //메세지전송 성공후 동작
-        const container = document.querySelector('.container')
-        container.classList.add('active')
+        //메일전송 성공후 동작
+        modal.classList.add('active')
 
-        const close = document.querySelector('.close')
         close.addEventListener('click', () => {
-          container.classList.remove('active')
+          dimm.classList.remove('active')
+          modal.classList.remove('active')
+          location.reload()
         })
       }
     }
