@@ -1,48 +1,55 @@
 const form = document.querySelector('form')
-const input = form.querySelector('input')  //input value 값은 form을 통해서 받아온 데이타이다.
-const food_list = document.querySelector('.food_list')
+const input = form.querySelector('input')
+const foodList = document.querySelector('.food_list')
 
 const APP_ID = '9a79b798'
 const APP_KEY = '71183b857c14f64142c0a1ab4fe9e4ac'
 
-// https://api.edamam.com/search
-// https://api.edamam.com/search?q=chicken&app_id=${71183b857c14f64142c0a1ab4fe9e4ac}&app_key=${71183b857c14f64142c0a1ab4fe9e4ac}&from=0&to=3
+function paintRecipe(items) {
+  console.log(items)
 
+  let foods = ''
+  items.map(item => {
+    foods += `
+    <div class="food">
+      <div class="food_img">
+        <img src="${item.recipe.image}" alt="" />
+      </div>
+      <div class="food_info">
+        <div class="food__title">
+          <h3>${item.recipe.label}</h3>
+          <a href="${
+            item.recipe.url
+          }" target="_blank" class="btn">View Recipe</a>
+        </div>
+        <p class="food__extra">Caloris : ${item.recipe.calories.toFixed(2)}</p>
+        <p class="food__extra">Diet Label : ${
+          item.recipe.dietLabels.length > 0 ? item.recipe.dietLabels : 'No-data'
+        }</p>
+        <p class="food__extra">Health Label : ${item.recipe.healthLabels}</p>
+      </div>
+    </div>
+    `
 
+    foodList.innerHTML = foods
+  })
+}
 
- async function getRecipe(query) {
-console.log(query)
-const baseURL = `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}&from=0&to=20`
-
-const response = await fetch(baseURL) //url주소에서 데이타를 가져오는 함수
-const data = await response.json()
-console.log(data.hits)
-
+async function getRecipe(query) {
+  const baseURL = `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}&from=0&to=20`
+  const response = await fetch(baseURL)
+  const data = await response.json()
+  paintRecipe(data.hits)
 }
 
 function init() {
-console.log('Recipe Start!!')
-form.addEventListener('submit', e => {
-  e.preventDefault()  //브라우즈의 기본이벤트로 인해 출력이 안되는것을 방지함
-  const query = input.value 
-  if(query === '') return
-  // console.log(input.value)
-  getRecipe(query)
-  input.value = ''
-
-
-
-}) 
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    const query = input.value
+    if (query === '') return
+    getRecipe(query)
+    input.value = ''
+  })
 }
-
-// function init() {
-//   console.log('Recipe Start!!')
-//   form.addEventListener('submit',function(e){
-//     e.preventDefault()
-//     console.log('표준함수형식')
-//   })
-  
-//   }) 
-//   }
 
 init()
